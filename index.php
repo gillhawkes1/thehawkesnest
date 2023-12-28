@@ -1,7 +1,7 @@
 <?php
-include_once('config.php');
+//include_once('../config.php');
 echo 'testing on the hawkes nest!'
-echo $THN_USER;
+// echo $THN_USER;
 // $sqlconn = new mysqli($THN_HOST,$THN_USER,$THN_PASSWORD,$THN_DB_NAME);
 
 // if($sqlconn->connect_error) {
