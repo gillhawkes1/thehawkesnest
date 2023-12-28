@@ -1,7 +1,6 @@
 <?php
-echo 'testing';
-include_once('../../config.php');
-echo 'testing2';
+include_once('/var/www/config.php');
+
 $sqlconn = new mysqli($THN_HOST,$THN_USER,$THN_PASSWORD,$THN_DB_NAME);
 
 if($sqlconn->connect_error) {
