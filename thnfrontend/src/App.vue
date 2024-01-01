@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <UnderConstruction msg="Powered by Vuejs. This site is underway!"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UnderConstruction from './components/UnderConstruction.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    UnderConstruction
   }
 }
 </script>
