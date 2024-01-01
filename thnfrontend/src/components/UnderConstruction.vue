@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <img src="@/assets/under-construction.png"/>
+    <img class="fittodevice" src="@/assets/under-construction.png"/>
   </div>
 </template>
 
@@ -29,5 +29,12 @@ li {
 }
 a {
   color: #42b983;
+}
+.fittodevice {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 </style>
