@@ -13,6 +13,12 @@ if($sqlconn->connect_error) {
   echo 'connection failed';
   die("connection failure " . $conn->connect_error);
 }
-echo "connected to db";
-return json_encode(array('connected'=> true));
+
+$sql = "SELECT * from links";
+$result = $sqlconn->query($sql);
+
+if($result) {
+  echo json_encode($result);
+}
+
 ?>
