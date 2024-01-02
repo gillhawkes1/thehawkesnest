@@ -1,6 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <UnderConstruction msg="Powered by Vuejs. This site is underway!"/>
+  <UnderConstruction msg="Powered by Vuejs, PHP & MySQL. This site is underway!"/>
 </template>
 
 <script>
