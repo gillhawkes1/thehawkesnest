@@ -23,12 +23,14 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "LoginModule",
   props: {},
   data () {
     return {
-      showLogin: false,
+      showLogin: true,
       user: {
         username: '',
         password: '',
@@ -38,6 +40,11 @@ export default {
   },
   methods: {
     login() {
+      axios.get('/api/public/getNav.php').then(response => {
+        console.log(response);
+      }).catch(error => {
+        console.log(error);
+      })
 
     },
     submitPromo() {

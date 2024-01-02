@@ -1,5 +1,4 @@
 <?php
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: *");
@@ -15,5 +14,5 @@ if($sqlconn->connect_error) {
   die("connection failure " . $conn->connect_error);
 }
 echo "connected to db";
-$sqlconn->close();
-?> 
+return json_encode(array('connected'=> true));
+?>
