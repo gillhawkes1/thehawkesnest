@@ -1,7 +1,6 @@
 <template>
   <div v-if="showLogin" class="login form-group">
-    <div class="card login-card">
-      <h3>Login</h3>
+    <div class="card login-card shadow-lg">
       <form id="loginform" action="">
         <div class="login-username">
           <input v-model="user.username" placeholder="username" class="form-control login-input" required/>
@@ -9,7 +8,7 @@
         <div class="login-password login-input-div">
           <input v-model="user.password" placeholder="password" type="password" class="form-control login-input" required/>
         </div>
-        <button id="submitlogin" class="btn btn-primary submit-btn" @click="this.login()">Login</button>
+        <button id="submitlogin" class="btn submit-btn" @click="this.login()">Login</button>
       </form>
     </div>
   </div>
@@ -57,14 +56,14 @@ export default {
   padding-bottom: 20px;
 }
 .login-card {
-  width: 30%;
-  min-width: 70%;
+  width: 20%;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: rgba(207, 206, 203, 0.534);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5) !important;
 }
 .login-input-div {
   text-align: center;
@@ -73,6 +72,7 @@ export default {
 .login-input {
   background-color: white;
   margin: 5px;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5) !important;
 }
 
 ::placeholder {
@@ -83,5 +83,23 @@ export default {
 
 .submit-btn {
   margin-top: 10px;
+  border-color: #1f2c3a;
+  border:2px solid #1f2c3a;
+  background-color: #1f2c3a;
+  color: white;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5) !important;
+}
+
+.submit-btn:hover {
+  border-color: #1f2c3a;
+  border:2px solid #1f2c3a;
+}
+
+/* phones */
+@media (max-width: 600px) {
+  .login-card {
+    width: 80%;
+
+  }
 }
 </style>

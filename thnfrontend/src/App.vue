@@ -31,6 +31,9 @@ html, body {
   height: 100vh;
   background-color: #2c3e50;
 }
+.shadow {
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5) !important;
+}
 .homepageimg {
   height: 300px;
   width: 300px;
