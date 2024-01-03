@@ -17,10 +17,15 @@ if($sqlconn->connect_error) {
 $sql = "SELECT * from links;";
 $result = $sqlconn->query($sql);
 if($result) {
+  $data = [];
   while ($row = $result->fetch_assoc()) {
-    print_r($row);
+    $data[] = $row;
   }
-  echo json_encode($result);
+  $sqlconn->close();
+  echo json_encode($data);
+} else {
+  echo json_encode(['error' => 'Query failed']);
+  $sqlconn->close();
 }
 
 ?>
