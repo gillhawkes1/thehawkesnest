@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     login() {
-      axios.get('/api/public/getNav.php').then(response => {
+      axios.get('/api/public/getLinks.php').then(response => {
         console.log(response);
       }).catch(error => {
         console.log(error);

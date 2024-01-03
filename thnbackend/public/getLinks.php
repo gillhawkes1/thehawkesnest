@@ -16,7 +16,11 @@ if($sqlconn->connect_error) {
 
 $sql = "SELECT * from links;";
 $result = $sqlconn->query($sql);
-echo json_encode($result);
-
+if($result) {
+  while ($row = $result->fetch_assoc()) {
+    print_r($row);
+  }
+  echo json_encode($result);
+}
 
 ?>
