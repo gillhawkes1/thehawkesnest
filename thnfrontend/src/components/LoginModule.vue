@@ -3,13 +3,43 @@
     <div class="card login-card shadow-lg">
       <form id="loginform" action="">
         <div class="login-username">
-          <input v-model="user.username" placeholder="username" class="form-control login-input" required/>
+          <input v-model="returningUser.username" placeholder="username" class="form-control login-input" required/>
         </div>
         <div class="login-password login-input-div">
-          <input v-model="user.password" placeholder="password" type="password" class="form-control login-input" required/>
+          <input v-model="returningUser.password" placeholder="password" type="password" class="form-control login-input" required/>
         </div>
-        <button id="submitlogin" class="btn submit-btn" @click="this.login()">Login</button>
+        <button id="submitlogin" class="btn submit-btn" @click="this.login(this.returningUser)">Login</button>
       </form>
+      <div class="switch-forms">
+        <p>New User?</p>
+        <a href="#" @click="this.showSignupForm()">Signup</a>
+      </div>
+    </div>
+  </div>
+  <div v-if="this.showSignup" class="login form-group">
+    <div class="card login-card shadow-lg">
+      <form id="signupform" action="">
+        <div class="login-username">
+          <input v-model="newUser.fname" placeholder="first name" class="form-control login-input" required/>
+        </div>
+        <div class="login-username">
+          <input v-model="newUser.lname" placeholder="last name" class="form-control login-input" required/>
+        </div>
+        <div class="login-username">
+          <input v-model="newUser.email" placeholder="email address" class="form-control login-input" required/>
+        </div>
+        <div class="login-username">
+          <input v-model="newUser.username" placeholder="username" class="form-control login-input" required/>
+        </div>
+        <div class="login-password login-input-div">
+          <input v-model="newUser.password" placeholder="password" type="password" class="form-control login-input" required/>
+        </div>
+        <button id="submitsignup" class="btn submit-btn" @click="this.singup(this.newUser)">Signup</button>
+      </form>
+      <div class="switch-forms">
+        <p>Returning User?</p>
+        <a href="#" @click="this.showLoginForm()">Login</a>
+      </div>
     </div>
   </div>
 </template>
@@ -23,24 +53,40 @@ export default {
   data () {
     return {
       showLogin: true,
-      user: {
+      showSignup: false,
+      returningUser: {
         username: '',
         password: '',
+      },
+      newUser: {
+        username: '',
+        password: '',
+        email: '',
+        fname:'',
+        lname: ''
       },
       promocode: '',
     }
   },
   methods: {
     login() {
-      axios.get('/api/public/getLinks.php').then(response => {
+      axios.get('/api/public/validateLogin.php').then(response => {
         console.log(response);
       }).catch(error => {
         console.log(error);
       })
 
     },
-    submitPromo() {
+    signup() {
 
+    },
+    showSignupForm() {
+      this.showLogin = false;
+      this.showSignup = true;
+    },
+    showLoginForm() {
+      this.showLogin = true;
+      this.showSignup = false;
     }
   }
 };
@@ -82,7 +128,7 @@ export default {
 }
 
 .submit-btn {
-  margin-top: 10px;
+  margin: 10px 10px 10px 10px;
   border-color: #1f2c3a;
   border:2px solid #1f2c3a;
   background-color: #1f2c3a;
@@ -93,6 +139,15 @@ export default {
 .submit-btn:hover {
   border-color: #1f2c3a;
   border:2px solid #1f2c3a;
+}
+.switch-forms {
+  display: inline-flex;
+  overflow-y: auto;
+  font-size: large;
+}
+
+.switch-forms > p {
+  padding-right: 5px
 }
 
 /* phones */
