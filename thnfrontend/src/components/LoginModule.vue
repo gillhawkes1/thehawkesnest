@@ -13,7 +13,7 @@
         </form>
         <div class="switch-forms">
           <p>New User?</p>
-          <a href="#" @click="this.toggleLogin()">Signup</a>
+          <a href="javascript:void(0)" @click="this.toggleLogin()">Signup</a>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
         </form>
         <div class="switch-forms">
           <p>Returning User?</p>
-          <a href="#" @click="this.toggleLogin()">Login</a>
+          <a href="javascript:void(0)" @click="this.toggleLogin()">Login</a>
         </div>
       </div>
     </div>
