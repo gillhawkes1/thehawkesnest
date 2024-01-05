@@ -3,10 +3,10 @@
     <div v-if="showLogin" class="login form-group fade-out">
       <div class="card login-card shadow-lg">
         <form id="loginform" action="">
-          <div class="login-username">
+          <div class="login-input-div">
             <input v-model="returningUser.username" placeholder="username" class="form-control login-input" required/>
           </div>
-          <div class="login-password login-input-div">
+          <div class="login-input-div">
             <input v-model="returningUser.password" placeholder="password" type="password" class="form-control login-input" required/>
           </div>
           <button id="submitlogin" class="btn submit-btn" @click="this.login(this.returningUser)">Login</button>
@@ -20,22 +20,22 @@
     <div v-else class="login form-group fade-out">
       <div class="card login-card shadow-lg">
         <form id="signupform" action="">
-          <div class="login-username">
+          <div class="login-input-div">
             <input v-model="newUser.fname" placeholder="first name" type="text" minlength="2" class="form-control login-input" required/>
           </div>
-          <div class="login-username">
+          <div class="login-input-div">
             <input v-model="newUser.lname" placeholder="last name" type="text" minlength="2" class="form-control login-input" required/>
           </div>
-          <div class="login-username">
+          <div class="login-input-div">
             <input v-model="newUser.email" placeholder="email address" type="email" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Please enter an email address with the pattern: gill@example.com" class="form-control login-input" required/>
           </div>
-          <div class="login-username">
+          <div class="login-input-div">
             <input v-model="newUser.username" placeholder="username" type="text" minlength="4" class="form-control login-input" required/>
           </div>
-          <div class="login-password login-input-div">
+          <div class="login-input-div">
             <input v-model="newUser.password" placeholder="password" type="password" minlength="8" class="form-control login-input" required/>
           </div>
-          <div class="login-password login-input-div">
+          <div class="login-input-div">
             <input v-model="newUser.password2" placeholder="password (again)" type="password" minlength="8" class="form-control login-input" required/>
           </div>
           <button id="submitsignup" class="btn submit-btn" @click="this.signUp(this.newUser)">Signup</button>
@@ -113,15 +113,20 @@ export default {
 .login-card {
   width: 20%;
   align-items: center;
-  padding: 15px;
+  padding: 20px;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: rgba(207, 206, 203, 0.534);
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5) !important;
+  border-radius: 20px;
 }
 .login-input-div {
   text-align: center;
+}
+
+.login-input-div > input {
+  border-radius: 15px;
 }
 
 .login-input {
@@ -143,6 +148,7 @@ export default {
   background-color: #1f2c3a;
   color: white;
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5) !important;
+  border-radius: 15px;
 }
 
 .submit-btn:hover {
@@ -153,6 +159,7 @@ export default {
   display: inline-flex;
   overflow-y: auto;
   font-size: large;
+  margin-bottom: -20px;
 }
 
 .switch-forms > p {
