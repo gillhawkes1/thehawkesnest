@@ -13,7 +13,7 @@
         </form>
         <div class="switch-forms">
           <p>New User?</p>
-          <a href="#" @click="this.showSignupForm()">Signup</a>
+          <a href="#" @click="this.toggleLogin()">Signup</a>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
         </form>
         <div class="switch-forms">
           <p>Returning User?</p>
-          <a href="#" @click="this.showLoginForm()">Login</a>
+          <a href="#" @click="this.toggleLogin()">Login</a>
         </div>
       </div>
     </div>
@@ -89,13 +89,9 @@ export default {
         return false;
       }
     },
-    showSignupForm() {
-      this.showLogin = false;
-      this.showSignup = true;
-    },
-    showLoginForm() {
-      this.showLogin = true;
-      this.showSignup = false;
+    toggleLogin() {
+      this.showLogin = !this.showLogin;
+      this.showSignup = !this.showSignup;
     }
   }
 };
