@@ -1,47 +1,53 @@
 <template>
-  <div v-if="showLogin" class="login form-group">
-    <div class="card login-card shadow-lg">
-      <form id="loginform" action="">
-        <div class="login-username">
-          <input v-model="returningUser.username" placeholder="username" class="form-control login-input" required/>
+  <transition name="fade" mode="out-in">
+    <div v-if="showLogin" class="login form-group fade-out">
+      <div class="card login-card shadow-lg">
+        <form id="loginform" action="">
+          <div class="login-username">
+            <input v-model="returningUser.username" placeholder="username" class="form-control login-input" required/>
+          </div>
+          <div class="login-password login-input-div">
+            <input v-model="returningUser.password" placeholder="password" type="password" class="form-control login-input" required/>
+          </div>
+          <button id="submitlogin" class="btn submit-btn" @click="this.login(this.returningUser)">Login</button>
+        </form>
+        <div class="switch-forms">
+          <p>New User?</p>
+          <a href="#" @click="this.showSignupForm()">Signup</a>
         </div>
-        <div class="login-password login-input-div">
-          <input v-model="returningUser.password" placeholder="password" type="password" class="form-control login-input" required/>
-        </div>
-        <button id="submitlogin" class="btn submit-btn" @click="this.login(this.returningUser)">Login</button>
-      </form>
-      <div class="switch-forms">
-        <p>New User?</p>
-        <a href="#" @click="this.showSignupForm()">Signup</a>
       </div>
     </div>
-  </div>
-  <div v-if="this.showSignup" class="login form-group">
-    <div class="card login-card shadow-lg">
-      <form id="signupform" action="">
-        <div class="login-username">
-          <input v-model="newUser.fname" placeholder="first name" class="form-control login-input" required/>
+    <div v-else class="login form-group fade-out">
+      <div class="card login-card shadow-lg">
+        <form id="signupform" action="">
+          <div class="login-username">
+            <input v-model="newUser.fname" placeholder="first name" class="form-control login-input" required/>
+          </div>
+          <div class="login-username">
+            <input v-model="newUser.lname" placeholder="last name" class="form-control login-input" required/>
+          </div>
+          <div class="login-username">
+            <input v-model="newUser.email" placeholder="email address" class="form-control login-input" required/>
+          </div>
+          <div class="login-username">
+            <input v-model="newUser.username" placeholder="username" class="form-control login-input" required/>
+          </div>
+          <div class="login-password login-input-div">
+            <input v-model="newUser.password" placeholder="password" type="password" class="form-control login-input" required/>
+          </div>
+          <div class="login-password login-input-div">
+            <input v-model="newUser.password2" placeholder="password (again)" type="password" class="form-control login-input" required/>
+          </div>
+          <button id="submitsignup" class="btn submit-btn" @click="this.singup(this.newUser)">Signup</button>
+        </form>
+        <div class="switch-forms">
+          <p>Returning User?</p>
+          <a href="#" @click="this.showLoginForm()">Login</a>
         </div>
-        <div class="login-username">
-          <input v-model="newUser.lname" placeholder="last name" class="form-control login-input" required/>
-        </div>
-        <div class="login-username">
-          <input v-model="newUser.email" placeholder="email address" class="form-control login-input" required/>
-        </div>
-        <div class="login-username">
-          <input v-model="newUser.username" placeholder="username" class="form-control login-input" required/>
-        </div>
-        <div class="login-password login-input-div">
-          <input v-model="newUser.password" placeholder="password" type="password" class="form-control login-input" required/>
-        </div>
-        <button id="submitsignup" class="btn submit-btn" @click="this.singup(this.newUser)">Signup</button>
-      </form>
-      <div class="switch-forms">
-        <p>Returning User?</p>
-        <a href="#" @click="this.showLoginForm()">Login</a>
       </div>
     </div>
-  </div>
+  </transition>
+
 </template>
 
 <script>
@@ -61,6 +67,7 @@ export default {
       newUser: {
         username: '',
         password: '',
+        password2: '',
         email: '',
         fname:'',
         lname: ''
@@ -78,7 +85,9 @@ export default {
 
     },
     signup() {
-
+      if(this.newUser.password !== this.newUser.password2) {
+        return false;
+      }
     },
     showSignupForm() {
       this.showLogin = false;

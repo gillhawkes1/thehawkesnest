@@ -54,6 +54,15 @@ li {
 a {
   color: #42b983;
 }
+.fade-out {
+  overflow: hidden;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: all 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
 
 @media (max-width: 600px){
   .homepageimg {
