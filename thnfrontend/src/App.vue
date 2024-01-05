@@ -52,7 +52,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #d86b04;
 }
 .fade-out {
   overflow: hidden;
