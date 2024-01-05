@@ -21,24 +21,24 @@
       <div class="card login-card shadow-lg">
         <form id="signupform" action="">
           <div class="login-username">
-            <input v-model="newUser.fname" placeholder="first name" class="form-control login-input" required/>
+            <input v-model="newUser.fname" placeholder="first name" type="text" minlength="2" class="form-control login-input" required/>
           </div>
           <div class="login-username">
-            <input v-model="newUser.lname" placeholder="last name" class="form-control login-input" required/>
+            <input v-model="newUser.lname" placeholder="last name" type="text" minlength="2" class="form-control login-input" required/>
           </div>
           <div class="login-username">
-            <input v-model="newUser.email" placeholder="email address" class="form-control login-input" required/>
+            <input v-model="newUser.email" placeholder="email address" type="email" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Please enter an email address with the pattern: gill@example.com" class="form-control login-input" required/>
           </div>
           <div class="login-username">
-            <input v-model="newUser.username" placeholder="username" class="form-control login-input" required/>
+            <input v-model="newUser.username" placeholder="username" type="text" minlength="4" class="form-control login-input" required/>
           </div>
           <div class="login-password login-input-div">
-            <input v-model="newUser.password" placeholder="password" type="password" class="form-control login-input" required/>
+            <input v-model="newUser.password" placeholder="password" type="password" minlength="8" class="form-control login-input" required/>
           </div>
           <div class="login-password login-input-div">
-            <input v-model="newUser.password2" placeholder="password (again)" type="password" class="form-control login-input" required/>
+            <input v-model="newUser.password2" placeholder="password (again)" type="password" minlength="8" class="form-control login-input" required/>
           </div>
-          <button id="submitsignup" class="btn submit-btn" @click="this.singup(this.newUser)">Signup</button>
+          <button id="submitsignup" class="btn submit-btn" @click="this.signUp(this.newUser)">Signup</button>
         </form>
         <div class="switch-forms">
           <p>Returning User?</p>
@@ -84,7 +84,7 @@ export default {
       })
 
     },
-    signup() {
+    signUp() {
       if(this.newUser.password !== this.newUser.password2) {
         return false;
       }
