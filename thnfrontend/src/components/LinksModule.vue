@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showLinks" class="links-group">
+  <div v-if="this.showLinks" class="links-group">
     <div v-for="link in this.links" :key="link.shortname" class="link-item">
       <a v-if="link.type === 'url'" :href="link.url" target="_blank">
         <img :src="link.img" :alt="link.shortname" class="link" />
@@ -66,7 +66,7 @@ export default {
   methods: {
     getLinks() {
       axios.get('/api/public/getLinks.php').then(response => {
-        this.links = response.data;
+        //this.links = response.data;
       }).catch(error => {
         console.log(error);
       });
