@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import auth from '@/auth';
 import axios from 'axios';
 
 export default {
@@ -79,14 +80,27 @@ export default {
     login() {
       axios.get('/api/public/validateLogin.php').then(response => {
         console.log(response);
+        if (response.allowLogin === true) {
+          auth.isAuthenticated = true;
+          this.$router.push('/home');
+        }
       }).catch(error => {
         console.log(error);
-      })
-
+      });
     },
     signUp() {
       if(this.newUser.password !== this.newUser.password2) {
         return false;
+      } else { 
+        axios.get('/api/public/createUser.php').then(response => {
+          console.log(response);
+          if (response.userCreated === true) {
+            alert('Username created. This page will refresh and you may now login.');
+            window.location.reload();
+          }
+        }).catch(error => {
+          console.log(error);
+        });
       }
     },
     toggleLogin() {

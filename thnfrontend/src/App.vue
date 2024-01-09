@@ -1,18 +1,12 @@
 <template>
   <img alt="The Hawkes Nest logo" src="./../public/images/hawkesbaby.png" class="homepageimg">
-  <LinksModule />
-  <LoginModule />
+  <router-view></router-view>
 </template>
 
 <script>
-import LoginModule from './components/LoginModule.vue'
-import LinksModule from './components/LinksModule.vue'
-
 export default {
   name: 'App',
   components: {
-    LoginModule,
-    LinksModule
   }
 }
 </script>
