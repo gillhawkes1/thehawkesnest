@@ -67,6 +67,7 @@ export default {
     getLinks() {
       axios.get('/api/public/getLinks.php').then(response => {
         //this.links = response.data;
+        console.log(response)
       }).catch(error => {
         console.log(error);
       });
