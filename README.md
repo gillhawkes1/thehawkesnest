@@ -1,5 +1,5 @@
 # thehawkesnest
-website for personal and professional growth. trying to utilize many different languages and frameworks in the the smartest way for learning purposes
+website for personal and professional growth. utilizing vuejs front end & php/laravel backend
 
 initial goals:
 - php backend
