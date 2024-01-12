@@ -1,14 +1,17 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: true,
+  transpileDependencies: true,  
+  pluginOptions: {
+    dotenv: {
+      path: `.env.${process.env.NODE_ENV}`,
+    },
+  },
   devServer: {
     proxy: {
-      // local mysql
-      '/api': {
+      "/api": {
         target: 'http://localhost:80',
-        changeOrigin: true,
-        pathRewrite: { '^/api': '' }
+        pathRewrite: { '^/api': '' },
       },
     }
-  }
-})
+  },
+});

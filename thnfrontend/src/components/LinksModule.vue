@@ -65,7 +65,7 @@ export default {
   },
   methods: {
     getLinks() {
-      axios.get('/api/public/getLinks.php').then(response => {
+      axios.get('/api/public/endpoints/getLinks.php').then(response => {
         //this.links = response.data;
         console.log(response)
       }).catch(error => {
@@ -79,16 +79,15 @@ export default {
       return gmailLink;
     },
     createSMS() {
-      // Replace '1234567890' with your actual phone number
       const pn = '+13363149164';
-      const msg = 'Hey, Gill!\n'
+      const msg = 'Hey, Gill! '
       const promptSMS = `sms:${pn}?body=${msg}`;
       return promptSMS;
     }
   },
   mounted() {
     //this.getLinks();
-    console.log(this.links)
+    //console.log(this.links)
   }
 }
 </script>

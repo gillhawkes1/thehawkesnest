@@ -1,6 +1,6 @@
 <?php
 
-class Database
+class DatabaseConnection
 {
   private $host;
   private $username;
@@ -18,6 +18,9 @@ class Database
 
   public function connect()
   {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
     $this->conn = new mysqli($this->host, $this->username, $this->password, $this->database);
 
     if ($this->conn->connect_error) {

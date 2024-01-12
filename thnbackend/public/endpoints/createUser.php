@@ -1,26 +1,22 @@
 <?php 
 
-include './classes/class-user.php';
-include './classes/class-db.php';
-include('/var/www/config.php');
+require_once('../classes/class-user.php');
+require_once('../classes/class-db.php');
 
+$jsondata = file_get_contents("php://input");
+$postdata = json_decode($jsondata, true);
 
-// Example usage
-$dbConnection = new Database(THN_HOST,THN_USER,THN_PASSWORD,THN_DB_NAME);
+//connect and add user
+$dbConnection = new DatabaseConnection(THN_HOST,THN_USER,THN_PASSWORD,THN_DB_NAME);
 $user = new User($dbConnection);
+$salt = bin2hex(random_bytes(16));
+$newuser = $user->addUser($postdata['username'], $salt, password_hash($salt . $postdata['password'], PASSWORD_BCRYPT), $postdata['email'], $postdata['fname'], $postdata['lname']);
 
-// Example data
-$newUsername = "new_user";
-$newEmail = "new_user@example.com";
-$newPassword = password_hash("password123", PASSWORD_DEFAULT);
-
-// Add a new user
-$result = $user->addUser($newUsername, $newEmail, $newPassword);
-
-if ($result) {
-  echo "User added successfully!";
+//return message
+if($newuser) {
+  echo json_encode(['status'=> 'success', 'message'=> 'User added successfully. The page will now refresh and you may login.']);
 } else {
-  echo "Error adding user.";
+  echo json_encode(['status'=> 'error','message'=> 'Error occurred, please try again.']);
 }
 
 ?>
