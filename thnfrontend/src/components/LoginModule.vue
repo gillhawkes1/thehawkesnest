@@ -50,6 +50,7 @@
 import auth from '@/auth';
 import axios from 'axios';
 const env = process.env.VUE_APP_ENDPOINT_PATH;
+console.log('env',env);
 
 export default {
   name: "LoginModule",
