@@ -5,7 +5,7 @@ import auth from './auth';
 
 const routes = [
   { path: '/', redirect: '/login' },
-  { path: '/login', component: LoginPage },
+  { path: '/login', redirect: '/', component: LoginPage },
   { path: '/home', component: HomePage, meta: { requiresAuth: true } },
 ];
 
