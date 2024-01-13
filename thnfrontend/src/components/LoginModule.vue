@@ -49,8 +49,7 @@
 <script>
 import auth from '@/auth';
 import axios from 'axios';
-const env = process.env.VUE_APP_ENDPOINT_PATH;
-console.log('process.env',process.env);
+const endpointpath = process.env.VUE_APP_ENDPOINT_PATH;
 
 export default {
   name: "LoginModule",
@@ -77,7 +76,7 @@ export default {
   },
   methods: {
     login() {
-      axios.post(`${env}createUser.php`,this.newUser).then(response => {
+      axios.post(`${endpointpath}createUser.php`,this.newUser).then(response => {
         console.log(response);
         if (response.allowLogin === true) {
           auth.isAuthenticated = true;
@@ -96,8 +95,8 @@ export default {
         axios.post(`${env}createUser.php`,this.newUser).then(response => {
           console.log(response);
           if (response.data.status === 'success') {
-            alert('Username created. This page will refresh and you may now login.');
-            window.location.reload();
+            alert(response.data.message);
+            this.toggleLogin();
           }
         }).catch(error => {
           console.log(error);

@@ -14,7 +14,7 @@ $newuser = $user->addUser($postdata['username'], $salt, password_hash($salt . $p
 
 //return message
 if($newuser) {
-  echo json_encode(['status'=> 'success', 'message'=> 'User added successfully. The page will now refresh and you may login.']);
+  echo json_encode(['status'=> 'success', 'message'=> 'User added successfully. You may login.']);
 } else {
   echo json_encode(['status'=> 'error','message'=> 'Error occurred, please try again.']);
 }
