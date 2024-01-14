@@ -87,16 +87,19 @@ export default {
       });
     },
     signUp() {
-      console.log(this.newUser);
+      console.log(this.newUser); 
       if(this.newUser.password !== this.newUser.password2) {
         this.passwordMatch = false;
         return false;
       } else {
-        axios.post(`${env}createUser.php`,this.newUser).then(response => {
+        axios.post(`${endpointpath}createUser.php`,this.newUser).then(response => {
           console.log(response);
           if (response.data.status === 'success') {
             alert(response.data.message);
             this.toggleLogin();
+          } else {
+            alert(response.data.message);
+            console.log(response.data.message);
           }
         }).catch(error => {
           console.log(error);
