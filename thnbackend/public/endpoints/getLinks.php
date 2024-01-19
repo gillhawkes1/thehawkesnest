@@ -27,5 +27,3 @@ if($result) {
   echo json_encode(['error' => 'Query failed']);
   $sqlconn->close();
 }
-
-?>

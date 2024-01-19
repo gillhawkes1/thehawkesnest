@@ -10,7 +10,8 @@ $postdata = json_decode($jsondata, true);
 $dbConnection = new DatabaseConnection(THN_HOST,THN_USER,THN_PASSWORD,THN_DB_NAME);
 $user = new User($dbConnection);
 $salt = bin2hex(random_bytes(16));
-$newuser = $user->addUser($postdata['username'], $salt, password_hash($salt . $postdata['password'], PASSWORD_BCRYPT), $postdata['email'], $postdata['fname'], $postdata['lname']);
+$hashedPassword = password_hash($postdata['password'] . $salt, PASSWORD_BCRYPT);
+$newuser = $user->addUser($postdata['username'], $hashedPassword, $salt, $postdata['email'], $postdata['fname'], $postdata['lname']);
 
 //return message
 if($newuser) {
@@ -18,5 +19,3 @@ if($newuser) {
 } else {
   echo json_encode(['status'=> 'error','message'=> 'Error occurred, please try again.']);
 }
-
-?>

@@ -1,23 +1,13 @@
 <?php 
-
-include './classes/class-user.php';
+require_once('../classes/class-user.php');
+require_once('../classes/class-db.php');
 
 // Example usage
-$dbConnection = new Database("localhost", "username", "password", "your_database");
+$dbConnection = new DatabaseConnection(THN_HOST,THN_USER,THN_PASSWORD,THN_DB_NAME);
 $users = new User($dbConnection);
 
-// Example data
-$newUsername = "new_user";
-$newEmail = "new_user@example.com";
-$newPassword = password_hash("password123", PASSWORD_DEFAULT);
+$jsondata = file_get_contents("php://input");
+$postdata = json_decode($jsondata, true);
 
 // Add a new user
-$result = $users->addUser($newUsername, $newEmail, $newPassword);
-
-if ($result) {
-  echo "User added successfully!";
-} else {
-  echo "Error adding user.";
-}
-
-?>
+$result = $users->validateLoginAttempt($postdata['username'], $postdata['password']);

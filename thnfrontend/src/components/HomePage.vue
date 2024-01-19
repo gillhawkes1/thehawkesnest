@@ -1,14 +1,27 @@
 <template>
   <div class="homepage">
-    <h1>{{ msg }}</h1>
+    <h1>Hello, {{this.userdata.fname}}!</h1>
   </div>
 </template>
 
 <script>
+//import axios from 'axios';
+
 export default {
   name: 'HomePage',
   props: {
     msg: String
+  },
+  data () {
+    return {
+      userdata: {
+        fname: ""
+      },
+    }
+  },
+  methods: {
+    beforeRender() {
+    }
   }
 }
 </script>

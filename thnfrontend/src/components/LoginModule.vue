@@ -8,7 +8,7 @@
         <div class="login-input-div">
           <input v-model="returningUser.password" placeholder="password" type="password" class="form-control login-input" required/>
         </div>
-        <button id="submitlogin" class="btn submit-btn" @click="this.login(this.returningUser)">Login</button>
+        <button id="submitlogin" class="btn submit-btn" @click="this.login()">Login</button>
         <div class="switch-forms">
           <p>New User?</p>
           <a href="javascript:void(0)" @click="this.toggleLogin()">Signup</a>
@@ -76,11 +76,14 @@ export default {
   },
   methods: {
     login() {
-      axios.post(`${endpointpath}createUser.php`,this.newUser).then(response => {
-        console.log(response);
-        if (response.allowLogin === true) {
+      axios.post(`${endpointpath}validateLogin.php`,this.returningUser).then(response => {
+        console.log('res:::',response);
+        if (response.data.success) {
+          alert(response.data.message)
           auth.isAuthenticated = true;
           this.$router.push('/home');
+        } else { 
+          alert(response.data.message);
         }
       }).catch(error => {
         console.log(error);
@@ -97,6 +100,14 @@ export default {
           if (response.data.status === 'success') {
             alert(response.data.message);
             this.toggleLogin();
+            this.newUser = {
+              username: '',
+              password: '',
+              password2: '',
+              email: '',
+              fname:'',
+              lname: ''
+            };
           } else {
             alert(response.data.message);
             console.log(response.data.message);
