@@ -77,11 +77,13 @@ export default {
   methods: {
     login() {
       axios.post(`${endpointpath}validateLogin.php`,this.returningUser).then(response => {
-        console.log('res:::',response);
         if (response.data.success) {
           alert(response.data.message)
           auth.isAuthenticated = true;
-          this.$router.push('/home');
+          this.$router.push({
+            name: 'HomePage',
+            params: { username: this.returningUser.username}
+          });
         } else { 
           alert(response.data.message);
         }

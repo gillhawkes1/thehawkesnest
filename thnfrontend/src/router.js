@@ -6,7 +6,11 @@ import auth from './auth';
 const routes = [
   { path: '/', redirect: '/login' },
   { path: '/login', component: LoginPage },
-  { path: '/home', component: HomePage, meta: { requiresAuth: true } },
+  { 
+    path: '/home/:username', 
+    name: 'HomePage', 
+    component: HomePage, 
+    meta: { requiresAuth: true } },
 ];
 
 const router = createRouter({

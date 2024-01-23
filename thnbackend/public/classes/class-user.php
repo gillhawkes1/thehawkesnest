@@ -9,7 +9,7 @@ class User {
       $this->db = $db;
   }
 
-  public function addUser($username, $pass_hash, $salt, $email, $fname, $lname) {
+  public function addUser(string $username, string $pass_hash, string $salt, string $email, string $fname, string $lname) {
       $connection = $this->db->connect();
 
       $sql = "INSERT INTO users (username, hashed_password, salt, email, fname, lname) VALUES (?, ?, ?, ?, ?, ?)";
@@ -24,7 +24,7 @@ class User {
       return $result;
   }
 
-  public function validateLoginAttempt($username, $enteredPassword) {
+  public function validateLoginAttempt(string $username, string $enteredPassword) {
     try {
       $connection = $this->db->connect();
 
@@ -57,6 +57,29 @@ class User {
       }
     } catch (\Throwable $th) {
       echo json_encode(['success'=> false, 'message'=> 'An error occurred: '. $th->getMessage()]);
+    }
+  }
+
+  public function getUserData(string $username) {
+    try {
+      $connection = $this->db->connect();
+      $sql = "SELECT email, fname, lname, username FROM users WHERE username = ?";
+      $stmt = $connection->prepare($sql);
+      $stmt->bind_param("s", $username);
+      $result = $stmt->execute();
+      
+      if($result) {
+        $queryres = $stmt->get_result();
+        $userdata = $queryres->fetch_assoc();
+        $stmt->close();
+        $this->db->closeConnection();
+        return $userdata;
+      } else {
+        $this->db->closeConnection();
+        return false;
+      }
+    } catch (\Throwable $th) {
+      //throw $th;
     }
   }
 
