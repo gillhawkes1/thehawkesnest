@@ -1,6 +1,7 @@
 <template>
   <div class="homepage">
-    <!-- <h1>Hello, {{this.userdata.fname}}!</h1> -->
+    <h1 v-if="this.userdata">Hello, {{this.$utils.capsFirst(this.userdata.fname)}}!</h1>
+    <h5 v-else>Loading...</h5>
   </div>
 </template>
 
@@ -16,39 +17,23 @@ export default {
   },
   data () {
     return {
-      userdata: null,
-      username: null,
+      userdata: null
     }
   },
   methods: {
-    beforeMount() {
-      // if(auth.isAuthenticated) {
-        
-      // }
-      // axios.get(`${endpointpath}getUserdata.php?username=${this.username}`);
-    }
+
   },
-  beforeRouteEnter(to, from, next) {
+  beforeCreate() {
     if(auth.isAuthenticated) {
-      const username = to.params.username;
-      let fetchedUserData;
-      const fetch = axios.get(`${endpointpath}getUserdata.php?username=${username}`);
-        fetch.then(res => {
-          console.log(res);
-          fetchedUserData = res.data;
+      const username = this.$route.params.username;
+      axios.get(`${endpointpath}getUserdata.php?username=${username}`)
+        .then(res => {
+          this.userdata = res.data;
         })
         .catch(error => {
           console.log(error);
-          next(false);
-        }).finally(() => {
-          next(vm => {
-            vm.userdata = fetchedUserData;
-          });
         });
     }
-  },
-  mounted() {
-    console.log(this.userdata);
   }
 }
 </script>
