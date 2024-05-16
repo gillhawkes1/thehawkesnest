@@ -4,13 +4,20 @@ import LoginPage from './components/LoginPage.vue';
 import auth from './auth';
 
 const routes = [
-  { path: '/', redirect: '/login' },
-  { path: '/login', component: LoginPage },
+  {
+    path: '/',
+    redirect: '/login'
+  },
+  { 
+    path: '/login',
+    component: LoginPage
+  },
   { 
     path: '/home/:username', 
     name: 'HomePage', 
     component: HomePage, 
-    meta: { requiresAuth: true } },
+    meta: { requiresAuth: true } 
+  }
 ];
 
 const router = createRouter({

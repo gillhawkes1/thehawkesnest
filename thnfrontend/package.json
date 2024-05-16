@@ -8,11 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^1.6.3",
-    "bootstrap": "^5.3.2",
-    "core-js": "^3.8.3",
-    "vue": "^3.2.13",
-    "vue-router": "^4.2.5"
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "core-js": "^3.37.1",
+    "vue": "^3.4.27",
+    "vue-cli": "^2.9.6",
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

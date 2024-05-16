@@ -151,6 +151,10 @@ export default {
   text-align: center;
 }
 
+::placeholder {
+  text-align: center;
+}
+
 .login-input-div > input {
   border-radius: 15px;
 }
