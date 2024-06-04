@@ -12,6 +12,7 @@
         <div class="switch-forms">
           <p>New User?</p>
           <a href="javascript:void(0)" @click="this.toggleLogin()">Signup</a>
+          <h1>hello world</h1>
         </div>
       </div>
     </div>
