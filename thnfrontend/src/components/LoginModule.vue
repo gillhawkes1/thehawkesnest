@@ -92,7 +92,10 @@ export default {
       });
     },
     signUp() {
-      console.log(this.newUser); 
+      console.log("new user obj:", this.newUser);
+      if(!this.newUser.username || !this.newUser.password || !this.newUser.password2 || !this.newUser.email || !this.newUser.fname || !this.newUser.lname) {
+        return false;
+      }
       if(this.newUser.password !== this.newUser.password2) {
         this.passwordMatch = false;
         return false;
