@@ -11,7 +11,7 @@
         <button id="submitlogin" class="btn submit-btn" @click="this.login()">Login</button>
         <div class="switch-forms">
           <p>New User?</p>
-          <h1>this is my test</h1>
+          <h1>this is my test 1</h1>
           <a href="javascript:void(0)" @click="this.toggleLogin()">Signup</a>
         </div>
       </div>
