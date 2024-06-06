@@ -4,10 +4,6 @@ import LoginPage from './components/LoginPage.vue';
 import auth from './auth';
 
 const routes = [
-  {
-    path: '/',
-    redirect: '/login'
-  },
   { 
     path: '/login',
     component: LoginPage
