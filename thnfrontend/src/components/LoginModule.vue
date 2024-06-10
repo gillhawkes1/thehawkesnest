@@ -92,8 +92,8 @@ export default {
       });
     },
     signUp() {
-      console.log("new user obj:", this.newUser);
       if(!this.newUser.username || !this.newUser.password || !this.newUser.password2 || !this.newUser.email || !this.newUser.fname || !this.newUser.lname) {
+        alert("You must fill in all fields and ensure the password fields are identical when creating a new account.");
         return false;
       }
       if(this.newUser.password !== this.newUser.password2) {
