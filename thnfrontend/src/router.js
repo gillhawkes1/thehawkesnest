@@ -5,7 +5,7 @@ import auth from './auth';
 
 const routes = [
   { 
-    path: '/login',
+    path: '/',
     component: LoginPage
   },
   { 
@@ -24,7 +24,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !auth.isAuthenticated) {
-    next('/login');
+    next('/');
   } else {
     next();
   }
