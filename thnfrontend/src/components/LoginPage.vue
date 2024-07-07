@@ -1,12 +1,12 @@
 <template>
   <div class="login">
     <LinksModule />
-    <LoginModule />
+    <!-- <LoginModule /> -->
   </div>
 </template>
 
 <script>
-import LoginModule from './LoginModule.vue';
+// import LoginModule from './LoginModule.vue';
 import LinksModule from './LinksModule.vue';
 export default {
   name: 'LoginPage',
@@ -14,7 +14,7 @@ export default {
     msg: String
   },
   components: {
-    LoginModule,
+    // LoginModule,
     LinksModule,
   }
 }
