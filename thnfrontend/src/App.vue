@@ -4,9 +4,13 @@
 </template>
 
 <script>
+const { version } = require('.././package.json');
 export default {
   name: 'App',
   components: {
+  },
+  created() {
+    document.documentElement.setAttribute('build-version', version);
   }
 }
 </script>
