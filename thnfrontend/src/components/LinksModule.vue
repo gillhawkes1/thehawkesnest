@@ -50,7 +50,7 @@ export default {
         },
         {
           shortname: "CV",
-          filepath: "/files/gill-hawkes-cv.pdf",
+          filepath: "/files/gill_hawkes_resume.pdf",
           img: "/images/cv.png",
           type: 'download'
         },
