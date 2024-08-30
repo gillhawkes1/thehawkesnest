@@ -1,3 +1,2 @@
 thnbackend/config
-thnfrontend/.env.local
-thnfrontend/.env.production
+.env*
